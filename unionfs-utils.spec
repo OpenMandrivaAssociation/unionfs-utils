@@ -1,55 +1,58 @@
-%define name unionfs-utils
-%define version 0.1
-%define release %mkrel 1
+%define name		unionfs-utils
+%define origname	unionfs_utils
+%define version		0.2.1
+%define release		%mkrel 1
 
-%define lib_major 0
-%define lib_name %mklibname %{name} %{lib_major}
+%define major		0
+%define libname		%mklibname %{name} %{major}
+%define develname	%mklibname %{name} -d
 
 %define common_description Unionfs is a Stackable Unification File System.
 
-Summary: Userspace utilities for Unionfs
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Source0: ftp://ftp.fsl.cs.sunysb.edu/pub/unionfs/%{name}-%{version}.tar.bz2
-License: GPL
-Group: System/Kernel and hardware
-Url: http://www.unionfs.org/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: automake1.9
-BuildRequires: e2fsprogs-devel
-Obsoletes: unionfs-tools
-Provides: unionfs-tools
+Summary:	Userspace utilities for Unionfs
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
+Source0:	http://download.filesystems.org/unionfs/unionfs-utils-0.x/%{origname}-%{version}.tar.gz
+License:	GPL+
+Group:		System/Kernel and hardware
+URL:		http://unionfs.filesystems.org/
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	autoconf
+BuildRequires:	e2fsprogs-devel
+Obsoletes:	unionfs-tools
+Provides:	unionfs-tools
 
 %description
 %{common_description}
 
 This package contains userspace utilities for Unionfs.
 
-%package -n	%{lib_name}
+%package -n	%{libname}
 Summary:	Unionfs utilities library
 Group:		System/Libraries
 
-%description -n	%{lib_name}
+%description -n	%{libname}
 %{common_description}
 
 This package contains the library needed to run programs dynamically
 linked with Unionfs.
 
-%package -n	%{lib_name}-devel
+%package -n	%{develname}
 Summary:	Development tools for programs using Unionfs
 Group:		Development/C
-Requires:	%{lib_name} = %{version}
+Requires:	%{libname} = %{version}
 Provides:	%{name}-devel = %{version}-%{release}
+Obsoletes:	%{mklibname %name 0 -d}
 
-%description -n	%{lib_name}-devel
+%description -n	%{develname}
 %{common_description}
 
 This package contains the header files and libraries needed for
 developing programs using the Unionfs utilities library.
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{origname}-%{version}
 
 %build
 ./bootstrap
@@ -69,14 +72,12 @@ rm -rf %{buildroot}
 %{_bindir}/union*
 %{_mandir}/man8/*.8*
 
-%files -n %{lib_name}
-%{_libdir}/libunionfs_utils.so.*
+%files -n %{libname}
+%{_libdir}/libunionfs_utils.so.%{major}*
 
-%files -n %{lib_name}-devel
+%files -n %{develname}
 %{_includedir}/unionfs_utils.h
-%{_libdir}/libunionfs_utils.a
-%{_libdir}/libunionfs_utils.la
+%{_libdir}/libunionfs_utils.*a
 %{_libdir}/libunionfs_utils.so
 %{_mandir}/man3/*.3*
-
 
