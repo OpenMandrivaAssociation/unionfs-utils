@@ -17,7 +17,6 @@ Source0:	http://download.filesystems.org/unionfs/unionfs-utils-0.x/%{origname}-%
 License:	GPL+
 Group:		System/Kernel and hardware
 URL:		http://unionfs.filesystems.org/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	autoconf
 BuildRequires:	e2fsprogs-devel
 Obsoletes:	unionfs-tools
