@@ -1,7 +1,6 @@
 %define name		unionfs-utils
 %define origname	unionfs_utils
 %define version		0.2.1
-%define release		%mkrel 1
 
 %define major		0
 %define libname		%mklibname %{name} %{major}
@@ -12,7 +11,7 @@
 Summary:	Userspace utilities for Unionfs
 Name:		%{name}
 Version:	%{version}
-Release:	%{release}
+Release:	%mkrel 2
 Source0:	http://download.filesystems.org/unionfs/unionfs-utils-0.x/%{origname}-%{version}.tar.gz
 License:	GPL+
 Group:		System/Kernel and hardware
