@@ -54,13 +54,13 @@ developing programs using the Unionfs utilities library.
 %setup -q -n %{origname}-%{version}
 
 %build
-./bootstrap
+autoreconf -fi
 %configure2_5x
 %make
 
 %install
 rm -rf %{buildroot}
-%makeinstall
+%makeinstall_std
 
 %clean
 rm -rf %{buildroot}
