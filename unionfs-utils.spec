@@ -11,7 +11,7 @@
 Summary:	Userspace utilities for Unionfs
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 4
+Release:	%mkrel 5
 Source0:	http://download.filesystems.org/unionfs/unionfs-utils-0.x/%{origname}-%{version}.tar.gz
 License:	GPL+
 Group:		System/Kernel and hardware
@@ -19,6 +19,7 @@ URL:		http://unionfs.filesystems.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	autoconf
 BuildRequires:	e2fsprogs-devel
+BuildRequires:	libuuid-devel
 Obsoletes:	unionfs-tools
 Provides:	unionfs-tools
 
