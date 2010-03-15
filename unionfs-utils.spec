@@ -11,7 +11,7 @@
 Summary:	Userspace utilities for Unionfs
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 5
+Release:	%mkrel 6
 Source0:	http://download.filesystems.org/unionfs/unionfs-utils-0.x/%{origname}-%{version}.tar.gz
 License:	GPL+
 Group:		System/Kernel and hardware
