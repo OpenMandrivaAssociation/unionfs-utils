@@ -1,0 +1,11 @@
+--- unionfs_utils-0.2.1/configure.ac.bero	2013-01-16 03:31:07.579318487 +0100
++++ unionfs_utils-0.2.1/configure.ac	2013-01-16 03:31:11.231275704 +0100
+@@ -6,7 +6,7 @@ AC_INIT(UNIONFS_UTILS, sinclude([vers.m4
+ AM_INIT_AUTOMAKE
+ 
+ AC_CONFIG_SRCDIR([unionctl.c])
+-AM_CONFIG_HEADER([config.h])
++AC_CONFIG_HEADERS([config.h])
+ 
+ dnl turn off maintainer-mode Makefile rules, unless using --enable-maintainer-mode
+ AM_MAINTAINER_MODE

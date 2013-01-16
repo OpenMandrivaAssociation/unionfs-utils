@@ -13,10 +13,10 @@ Name:		%{name}
 Version:	%{version}
 Release:	%mkrel 10
 Source0:	http://download.filesystems.org/unionfs/unionfs-utils-0.x/%{origname}-%{version}.tar.gz
+Patch0:		unionfs-utils-automake-1.13.patch
 License:	GPL+
 Group:		System/Kernel and hardware
 URL:		http://unionfs.filesystems.org/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	autoconf
 BuildRequires:	pkgconfig(ext2fs)
 BuildRequires:	libuuid-devel
@@ -53,6 +53,7 @@ developing programs using the Unionfs utilities library.
 
 %prep
 %setup -q -n %{origname}-%{version}
+%apply_patches
 
 %build
 autoreconf -fi
