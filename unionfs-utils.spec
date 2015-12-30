@@ -8,6 +8,9 @@
 
 %define common_description Unionfs is a Stackable Unification File System.
 
+%define _disable_lto 1
+%define _disable_rebuild_configure 1
+
 Summary:	Userspace utilities for Unionfs
 Name:		%{name}
 Version:	%{version}
@@ -57,7 +60,7 @@ developing programs using the Unionfs utilities library.
 
 %build
 autoreconf -fi
-export CC=gcc
+export CC='gcc -fgnu89-inline'
 %configure
 %make
 
