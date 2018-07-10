@@ -14,7 +14,7 @@
 Summary:	Userspace utilities for Unionfs
 Name:		%{name}
 Version:	%{version}
-Release:	21
+Release:	22
 Source0:	http://download.filesystems.org/unionfs/unionfs-utils-0.x/%{origname}-%{version}.tar.gz
 Patch0:		unionfs-utils-automake-1.13.patch
 License:	GPL+
