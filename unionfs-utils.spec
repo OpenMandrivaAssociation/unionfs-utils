@@ -1,6 +1,4 @@
-%define name		unionfs-utils
 %define origname	unionfs_utils
-%define version		0.2.1
 
 %define major		0
 %define libname		%mklibname %{name} %{major}
@@ -12,9 +10,9 @@
 %define _disable_rebuild_configure 1
 
 Summary:	Userspace utilities for Unionfs
-Name:		%{name}
-Version:	%{version}
-Release:	22
+Name:		unionfs-utils
+Version:	0.2.1
+Release:	23
 Source0:	http://download.filesystems.org/unionfs/unionfs-utils-0.x/%{origname}-%{version}.tar.gz
 Patch0:		unionfs-utils-automake-1.13.patch
 License:	GPL+
@@ -24,7 +22,6 @@ BuildRequires:	autoconf
 BuildRequires:	pkgconfig(ext2fs)
 BuildRequires:	libuuid-devel
 Obsoletes:	unionfs-tools
-Provides:	unionfs-tools
 
 %description
 %{common_description}
@@ -44,9 +41,9 @@ linked with Unionfs.
 %package -n	%{develname}
 Summary:	Development tools for programs using Unionfs
 Group:		Development/C
-Requires:	%{libname} = %{version}
-Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	%{mklibname %name 0 -d}
+Requires:	%{libname} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
+Obsoletes:	%{mklibname %name 0 -d} < %{EVRD}
 
 %description -n	%{develname}
 %{common_description}
@@ -56,24 +53,18 @@ developing programs using the Unionfs utilities library.
 
 %prep
 %setup -q -n %{origname}-%{version}
-%apply_patches
+%autopatch -p1
 
 %build
 autoreconf -fi
 export CC='gcc -fgnu89-inline'
 %configure
-%make
+%make_build
 
 %install
-rm -rf %{buildroot}
-%makeinstall_std
-
-%clean
-rm -rf %{buildroot}
+%make_install
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/union*
 %{_mandir}/man8/*.8*
 
@@ -81,6 +72,7 @@ rm -rf %{buildroot}
 %{_libdir}/libunionfs_utils.so.%{major}*
 
 %files -n %{develname}
+%doc AUTHORS ChangeLog NEWS README
 %{_includedir}/unionfs_utils.h
 %{_libdir}/libunionfs_utils.so
 %{_mandir}/man3/*.3*
