@@ -17,7 +17,7 @@ Source0:	http://download.filesystems.org/unionfs/unionfs-utils-0.x/%{origname}-%
 Patch0:		unionfs-utils-automake-1.13.patch
 License:	GPL+
 Group:		System/Kernel and hardware
-URL:		http://unionfs.filesystems.org/
+URL:		https://unionfs.filesystems.org/
 BuildRequires:	autoconf
 BuildRequires:	pkgconfig(ext2fs)
 BuildRequires:	libuuid-devel
