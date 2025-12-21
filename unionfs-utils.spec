@@ -18,6 +18,10 @@ Patch0:		unionfs-utils-automake-1.13.patch
 License:	GPL+
 Group:		System/Kernel and hardware
 URL:		https://unionfs.filesystems.org/
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	autoconf
 BuildRequires:	pkgconfig(ext2fs)
 BuildRequires:	libuuid-devel
